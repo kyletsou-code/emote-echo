@@ -12,9 +12,13 @@ Deadline: November 2, 2026 at 2:00 PM Pacific.
 - [x] Registered Twitch app and successful authorization
 - [x] Verified actual Twitch emotes trigger sound
 - [x] Published GitHub repository
-- [ ] Actual demo recording checked, under three minutes
-- [ ] YouTube upload complete and viewable by judges
-- [ ] Account holder reviewed eligibility and legal declarations
-- [ ] Devpost project filled and final submission confirmed
+- [x] Actual demo recording checked, under three minutes (38 seconds locally)
+- [x] YouTube demo uploaded as Unlisted; processing and checks complete
+- [x] Account holder supplied country, feedback and eligibility confirmations
+- [x] Required Devpost draft fields saved (4/5 steps complete)
+- [x] Project thumbnail uploaded
+- [x] Two project gallery images uploaded with captions
+- [ ] Account holder's final review and acceptance of submission terms
+- [ ] Final Devpost submission — deliberately left undone at the account holder's request
 
 A saved draft is not a submitted entry. Update items only after verification. Login, CAPTCHA and any final legal acceptance require the account holder's participation or approval.

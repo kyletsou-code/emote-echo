@@ -24,6 +24,14 @@ I defined the idea and interaction rules, then used Codex to help build the appl
 
 The main challenges were making the time window roll continuously, preventing the same emotes from triggering twice, mixing several sounds into one short event, and ensuring simulated messages never contribute to live Twitch progress. Another challenge was keeping authorization local and avoiding credentials in shared files.
 
+## Accomplishments
+
+The prototype now receives real Twitch emotes, turns a 100-use burst into a soundscape, discovers new native emotes, and keeps the studio and overlay synchronized. Twelve automated tests cover the trigger rules and Twitch connection behavior.
+
+## What I learned
+
+Working with Codex helped me break an idea into smaller, testable parts. Starting with simulated chat made it easier to check the timing and audio before adding real Twitch input. The project also taught me why live events need duplicate protection, cooldowns and careful handling of authorization.
+
 ## What's next
 
 Shareable sound packs, additional original synth presets, optional limits per viewer, and support for third-party emote providers.

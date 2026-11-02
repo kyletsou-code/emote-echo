@@ -2,6 +2,8 @@
 
 **Give chat a voice.** A local streaming tool that turns bursts of native Twitch emotes into short, customizable soundscapes. Built with OpenAI Codex for the Codex x TwitchCon Hackathon.
 
+[Watch the live Twitch demo](https://youtu.be/VrU-XnluyRI).
+
 ## Run
 
 Requires **Node.js 22 or newer**. No npm dependencies, paid services, or AI API keys are needed.
