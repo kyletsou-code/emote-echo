@@ -11,7 +11,7 @@ Deadline: November 2, 2026 at 2:00 PM Pacific.
 - [x] Local screen recorder implementation
 - [x] Registered Twitch app and successful authorization
 - [x] Verified actual Twitch emotes trigger sound
-- [ ] Published GitHub repository
+- [x] Published GitHub repository
 - [ ] Actual demo recording checked, under three minutes
 - [ ] YouTube upload complete and viewable by judges
 - [ ] Account holder reviewed eligibility and legal declarations

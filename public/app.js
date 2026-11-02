@@ -40,9 +40,15 @@ function face(emote, size = '') {
 const player = new SoundPlayer();
 const recorder = new DemoRecorder(player, status => {
   const timer = $('#recording-time');
-  if (timer) timer.textContent = status.downloaded ? 'Video downloaded. Ready for YouTube.' : `${Math.floor((status.elapsed||0)/60)}:${String((status.elapsed||0)%60).padStart(2,'0')} / 2:55`;
-  if ($('#record-demo')) $('#record-demo').disabled = status.recording;
+  if (timer) timer.textContent = status.downloaded ? 'Video downloaded. Ready for YouTube.' : status.selecting ? 'Choose your window in the sharing picker…' : status.recording ? `${Math.floor((status.elapsed||0)/60)}:${String((status.elapsed||0)%60).padStart(2,'0')} / 2:55` : status.ready ? 'Check the preview, then start recording.' : 'Choose a window to begin.';
+  if ($('#record-demo')) $('#record-demo').disabled = !status.ready || status.recording || status.selecting;
+  if ($('#choose-recording-source')) $('#choose-recording-source').disabled = status.recording || status.selecting;
   if ($('#stop-recording')) $('#stop-recording').hidden = !status.recording;
+  if ($('#capture-preview')) {
+    $('#capture-preview').hidden = !status.ready && !status.recording;
+    if(status.stream){$('#capture-preview').srcObject=status.stream;$('#capture-preview').play().catch(()=>{});}
+    else if(!status.recording&&!status.ready)$('#capture-preview').srcObject=null;
+  }
   if(status.downloaded)toast('Demo saved to your downloads. Nothing was uploaded.');
 });
 let state, source, connected = false, monitor = false, lastSoundAt = 0, previewId = '', requestId = 0;
@@ -95,7 +101,7 @@ function studioMarkup() {
   <div class="sim-bottom"><span id="simulation-status"><span class="mini-dot"></span>120 emotes over 12 seconds will trigger your first storm.</span><button class="text-button" id="reset-session">${icons.reset}Reset session</button></div>
   </section><section class="panel history-panel"><div class="panel-heading"><div class="panel-title">RECENT SOUNDSCAPES</div>${icons.spark}</div><div id="history-list"></div><div class="session-stat-row"><div><strong id="total-uses">0</strong><span>emotes sent</span></div><div><strong id="total-storms">0</strong><span>storms played</span></div></div></section></div>
   <section class="how-banner"><span class="how-icon">${icons.spark}</span><div><strong>Every emote has a voice. Make it yours.</strong><p>Give hype a sparkle, mischief a chuckle, or upload something completely you.</p></div><a href="/settings">Explore your sound library ${icons.arrow}</a></section>
-  <details class="demo-recorder"><summary>Record your hackathon demo</summary><p>Choose a browser window or screen. This records real footage with Emote Echo’s audio and downloads it locally. It stops automatically at 2 minutes 55 seconds. Keep this studio tab open while recording.</p><div><button class="button secondary" id="record-demo">Start recording</button><button class="button primary" id="stop-recording" hidden>Stop &amp; save</button><span id="recording-time">Ready · local recording only</span></div></details>`;
+  <details class="demo-recorder"><summary>Record your hackathon demo</summary><p>Choose the browser window showing Emote Echo and check its preview. Recording starts only when you click Start recording. App audio is included. It stops at 2 minutes 55 seconds. Keep this studio tab open.</p><div><button class="button secondary" id="choose-recording-source">Choose window</button><button class="button primary" id="record-demo" disabled>Start recording</button><button class="button primary" id="stop-recording" hidden>Stop &amp; save</button><span id="recording-time">Choose a window to begin.</span></div><video id="capture-preview" muted autoplay playsinline hidden aria-label="Selected window preview"></video></details>`;
 }
 
 function settingsMarkup() {
@@ -141,6 +147,7 @@ function bind() {
     if (recorder.recording) { event.preventDefault(); window.open(link.href,'emote-echo-settings'); toast('Settings opened in another tab so recording can continue.'); }
   });
   if ($('#record-demo')) {
+    $('#choose-recording-source').onclick = async()=>{try{await recorder.choose();monitor=player.ready;update();}catch(error){toast(error.name==='NotAllowedError'?'Window selection was cancelled. Choose again when ready.':error.message,true);}};
     $('#record-demo').onclick = async () => { try { await recorder.start(); monitor=player.ready; update(); } catch(error) { toast(error.name==='NotAllowedError'?'Screen sharing was cancelled. You can start again when ready.':error.message,true); } };
     $('#stop-recording').onclick = () => recorder.stop();
   }

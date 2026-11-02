@@ -8,7 +8,7 @@ Connect Twitch and verify live emotes reach the studio. Open separate tabs for t
 
 For a small demo channel, temporarily set the threshold to 3 and keep the 15-second window. Explain that the normal target is 100. Restore the default after recording.
 
-Use the studio recorder or an external recorder that captures app audio. The built-in recorder does not include microphone narration; narration can be recorded separately if desired.
+Use the studio recorder or an external recorder that captures app audio. The studio recorder lets you choose a window and inspect its preview before starting. The built-in recorder does not include microphone narration; narration can be recorded separately if desired.
 
 ## 0:00–0:20 — idea
 

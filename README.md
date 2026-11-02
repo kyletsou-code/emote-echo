@@ -57,7 +57,7 @@ In a normal browser, click Enable sound once. OBS normally permits Browser Sourc
 
 ## Record a demo
 
-Expand **Record your hackathon demo** in the studio. Choose a browser window or screen to record actual footage. The app's audio is mixed directly into the recording. Stop to download `emote-echo-demo.webm`. Recording stops automatically at 2 minutes 55 seconds. Nothing is uploaded automatically.
+Expand **Record your hackathon demo** in the studio. Click **Choose window**, select a capture source and check the live preview. Then click **Start recording** to capture actual footage. The app's audio is mixed directly into the recording. Stop to download `emote-echo-demo.webm`. Recording stops automatically at 2 minutes 55 seconds. Nothing is uploaded automatically.
 
 Keep the recording studio tab open; use another tab for settings, Twitch chat or Codex. The recorder captures app audio, not microphone narration. Screen sharing and MediaRecorder support are required; use Chrome or Edge if the in-app browser lacks them. See `submission/demo-script.md` for the shot list.
 
